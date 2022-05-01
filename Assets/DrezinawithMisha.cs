@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BearMovement : MonoBehaviour
+public class DrezinawithMisha : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D myRigidbody;
@@ -19,16 +19,16 @@ public class BearMovement : MonoBehaviour
     void FixedUpdate()
     {
         change = Vector3.zero;
-        change.x = Input.GetAxisRaw("Horizontal");
+        change.x = Input.GetAxis("Horizontal");
         if (change != Vector3.zero)
         {
             MoveCharacter();
-            animator.SetFloat("moveX", change.x);
-            animator.SetBool("moving", true);
+            animator.SetFloat("moveXD", change.x);
+            animator.SetBool("movingXD", true);
         }
         else
         {
-            animator.SetBool("moving", false);
+            animator.SetBool("movingXD", false);
         }
     }
     void MoveCharacter()
