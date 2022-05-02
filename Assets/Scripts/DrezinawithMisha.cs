@@ -14,6 +14,9 @@ public class DrezinawithMisha : MonoBehaviour
     public GameObject player;
     public GameObject car;
     public GameObject carReady;
+
+    public GameObject CameraOn;
+    public GameObject CameraOff;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,11 @@ public class DrezinawithMisha : MonoBehaviour
  //         player.transform.position = transform.position;
             player.transform.position = new Vector3(transform.position.x, -0.1f, transform.position.z);
             car.transform.position = transform.position;
+            CameraOn.transform.position = new Vector3(transform.position.x, 0.3438f, -10);
+            CameraOff.transform.position = new Vector3(transform.position.x, 0.3438f, -10);
+
+            CameraOn.SetActive(true);
+            CameraOff.SetActive(false);
 
         }
     }

@@ -9,6 +9,9 @@ public class Drezina : MonoBehaviour
     public GameObject car;
     public GameObject carReady;
 
+    public GameObject CameraOn;
+    public GameObject CameraOff;
+
     void Start()
     {
         
@@ -22,6 +25,9 @@ public class Drezina : MonoBehaviour
             player.SetActive(false);
             car.SetActive(false);
             carReady.SetActive(true);
+
+            CameraOn.SetActive(true);
+            CameraOff.SetActive(false);
 
         }
     }
