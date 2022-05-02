@@ -8,6 +8,12 @@ public class DrezinawithMisha : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
+
+ 
+    public bool playerInRange;
+    public GameObject player;
+    public GameObject car;
+    public GameObject carReady;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +36,25 @@ public class DrezinawithMisha : MonoBehaviour
         {
             animator.SetBool("movingXD", false);
         }
+
     }
-    void MoveCharacter()
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            player.SetActive(true);
+            car.SetActive(true);
+            carReady.SetActive(false);
+
+ //         player.transform.position = transform.position;
+            player.transform.position = new Vector3(transform.position.x, -0.1f, transform.position.z);
+            car.transform.position = transform.position;
+
+        }
+    }
+
+        void MoveCharacter()
     {
         myRigidbody.MovePosition(
             transform.position + change * speed * Time.fixedDeltaTime

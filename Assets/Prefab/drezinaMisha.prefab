@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  playerInRange: 0
+  player: {fileID: 0}
+  car: {fileID: 0}
+  carReady: {fileID: 0}
 --- !u!212 &2219408773219089888
 SpriteRenderer:
   m_ObjectHideFlags: 0
