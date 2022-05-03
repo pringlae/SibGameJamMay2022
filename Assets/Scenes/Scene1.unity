@@ -8225,7 +8225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2008370248724376150, guid: e9ca6b8d63ce28443ab135bb20de98cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.793
+      value: -12.743
       objectReference: {fileID: 0}
     - target: {fileID: 2008370248724376150, guid: e9ca6b8d63ce28443ab135bb20de98cf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29686,6 +29686,22 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 742555861}
+    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
+      propertyPath: bearAPos.x
+      value: -12.743
+      objectReference: {fileID: 0}
+    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
+      propertyPath: bearBPos.x
+      value: 13.926
+      objectReference: {fileID: 0}
+    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
+      propertyPath: drezinaAPos.x
+      value: -11.901
+      objectReference: {fileID: 0}
+    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
+      propertyPath: drezinaBPos.x
+      value: 12.94
+      objectReference: {fileID: 0}
     - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: houseCollider
       value: 
