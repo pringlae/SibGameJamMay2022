@@ -26194,6 +26194,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 806196095957871168, guid: 66cb179d80b7b2e4f986dd0f42aa3181, type: 3}
   m_PrefabInstance: {fileID: 1459884572}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1459884574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 51842165360263518, guid: 66cb179d80b7b2e4f986dd0f42aa3181, type: 3}
+  m_PrefabInstance: {fileID: 1459884572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dac8560944c2374797e4fa0b180fca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1466549746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38582,7 +38593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: interactors.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: interactors.Array.data[0]
@@ -38628,6 +38639,10 @@ PrefabInstance:
       propertyPath: interactors.Array.data[10]
       value: 
       objectReference: {fileID: 794697423}
+    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
+      propertyPath: interactors.Array.data[11]
+      value: 
+      objectReference: {fileID: 1459884574}
     - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: days.Array.data[0].InvertDirection
       value: 1

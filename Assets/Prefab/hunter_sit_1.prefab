@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 806196095957871168}
   - component: {fileID: 6031173541335428371}
   - component: {fileID: 573795491566154787}
+  - component: {fileID: 51842165360263518}
   m_Layer: 0
   m_Name: hunter_sit_1
   m_TagString: Untagged
@@ -295,3 +296,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &51842165360263518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658022822482993549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dac8560944c2374797e4fa0b180fca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bubble: {fileID: 0}
+  interactionName: 0
