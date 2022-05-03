@@ -7,7 +7,7 @@ using System.Collections;
 public class Parallax : MonoBehaviour
 {
     private float startPos, length;
-    public GameObject camera;
+    public new GameObject camera;
     public float paralaxEffect;
 
     void Start()
