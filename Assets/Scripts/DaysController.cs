@@ -89,9 +89,12 @@ public class DaysController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
             foreach (var interactor in interactors)
-            {
-                if (interactor.BearNearBy) interactor.OnUse(bear);
-            }
+                if (interactor.BearNearBy) 
+                {
+                    interactor.OnUse(bear);
+                    break;
+                    
+                }
             
         if (!letterTaken && currentStation.LetterBox.BearNearBy && Input.GetKeyDown(KeyCode.E))
         {

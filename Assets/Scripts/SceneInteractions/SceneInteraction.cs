@@ -21,6 +21,11 @@ public class SceneInteraction : MonoBehaviour
     {
         if (!enabled || other.gameObject.layer != 6) return;
 
+        SetNearBy();
+    }
+
+    public void SetNearBy()
+    {
         outline.enabled = true;
         BearNearBy = true;
         UIController.Instance.SetInfoButtonsState(interactionName, true);

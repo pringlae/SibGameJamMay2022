@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
 
     public enum InfoButton
     {
-        Brake, GetOff, GetOn, Take, Water, Put, Give, None
+        Brake, GetOff, GetOn, Take, Water, Put, Give, PutAway, None
     }
 
     [System.Serializable]
@@ -64,6 +64,7 @@ public class UIController : MonoBehaviour
             case InfoButton.Water:
             case InfoButton.Put:
             case InfoButton.Give:
+            case InfoButton.PutAway:
                 keyDescriptions[1].transform.parent.gameObject.SetActive(enabled);
                 keyDescriptions[1].text = desc.description;
                 break;

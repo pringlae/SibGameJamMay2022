@@ -14,7 +14,7 @@ public class Animal : SceneInteraction
         var bear = other.GetComponent<BearMovement>();
         if (bear.itemHeld == null || bear.itemHeld != wantedItem || !bear.itemOnHand) return;
 
-        base.OnTriggerEnter2D(other);
+        SetNearBy();
     }
 
     public override void OnUse(BearMovement bear)

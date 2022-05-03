@@ -1341,6 +1341,8 @@ MonoBehaviour:
     description: "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u044C"
   - infoButton: 6
     description: "\u0414\u0430\u0442\u044C"
+  - infoButton: 7
+    description: "\u0423\u0431\u0440\u0430\u0442\u044C"
 --- !u!95 &320846497
 Animator:
   serializedVersion: 3
