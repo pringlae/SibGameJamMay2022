@@ -22,5 +22,6 @@ public class Animal : SceneInteraction
         base.OnUse(bear);
         bear.ClearItem();
         questCompleted = true;
+        UIController.Instance.AddCoins(20);
     }
 }

@@ -38,14 +38,16 @@ public class SceneInteraction : MonoBehaviour
     public void Activate()
     {
         enabled = true;
-        bubble.gameObject.SetActive(true);
+        if (bubble != null)
+            bubble.gameObject.SetActive(true);
     }
 
     public virtual void OnDayStart(int dayIndex) {}
     public virtual void OnDayEnd(int dayIndex) {}
     public virtual void OnUse(BearMovement bear)
     {
-        bubble.gameObject.SetActive(false);
+        if (bubble != null)
+            bubble.gameObject.SetActive(false);
         outline.enabled = false;
         BearNearBy = false;
         UIController.Instance.SetInfoButtonsState(interactionName, false);

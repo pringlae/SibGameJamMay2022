@@ -6424,6 +6424,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9163767967027110390, guid: 3ff1771dd80ebda4c89c52af3d5983d6, type: 3}
   m_PrefabInstance: {fileID: 328835767}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &331446502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
+  m_PrefabInstance: {fileID: 2121693086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3f7f10b33b58744ac95af8be7b48c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &332267968
 GameObject:
   m_ObjectHideFlags: 0
@@ -12504,6 +12515,38 @@ PrefabInstance:
     - target: {fileID: 78186171720941809, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289304039652001195, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 331446502}
+    - target: {fileID: 4289304039652001195, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextDay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289304039652001195, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DaysController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289304039652001195, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468367720565742398, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 331446502}
+    - target: {fileID: 4468367720565742398, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextDay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468367720565742398, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DaysController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468367720565742398, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8691355408671985027, guid: e5543e631f3f46c469501b54f05d9b5c, type: 3}
       propertyPath: m_Color.b

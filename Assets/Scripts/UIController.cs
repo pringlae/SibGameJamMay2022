@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     public Image drezinaButtonUp, drezinaButtonDown;
     public Text coinsText, timeText;
     public Image clockArrow;
+    public GameObject panelInTime, panelOutofTime;
 
     private Color disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
 

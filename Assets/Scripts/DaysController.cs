@@ -117,10 +117,26 @@ public class DaysController : MonoBehaviour
         animator.SetTrigger("dayFinish");
         foreach (var interactor in interactors)
             interactor.OnDayEnd(dayIndex);
-        StartCoroutine(NextDay());
+        if (timeCounting)
+        {
+            UIController.Instance.AddCoins(10);
+            UIController.Instance.panelInTime.SetActive(true);
+        }
+        else
+        {
+            UIController.Instance.AddCoins(5);
+            UIController.Instance.panelOutofTime.SetActive(true);
+        }
     }
 
-    private IEnumerator NextDay()
+    public void NextDay()
+    {
+        UIController.Instance.panelInTime.SetActive(false);
+        UIController.Instance.panelOutofTime.SetActive(false);
+        StartCoroutine(NextDayImpl());
+    }
+
+    private IEnumerator NextDayImpl()
     {
         yield return new WaitForSeconds(2);
         StartDay(dayIndex);
