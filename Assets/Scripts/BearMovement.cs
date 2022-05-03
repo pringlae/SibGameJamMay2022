@@ -5,6 +5,8 @@ using UnityEngine;
 public class BearMovement : MonoBehaviour
 {
     public float speed;
+    public new Camera camera;
+    public float maxMoveFromCamera;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
@@ -33,8 +35,8 @@ public class BearMovement : MonoBehaviour
     }
     void MoveCharacter()
     {
-        myRigidbody.MovePosition(
-            transform.position + change * speed * Time.fixedDeltaTime
-            );
+        Vector3 newPosition = transform.position + change * speed * Time.fixedDeltaTime;
+        newPosition.x = Mathf.Clamp(newPosition.x, camera.transform.position.x - maxMoveFromCamera, camera.transform.position.x + maxMoveFromCamera);
+        myRigidbody.MovePosition(newPosition);
     }
 }

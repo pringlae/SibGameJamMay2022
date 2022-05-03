@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6933813003004904154}
   - component: {fileID: 6933813003004904155}
   - component: {fileID: 6933813003004904153}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bear_1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  camera: {fileID: 0}
+  maxMoveFromCamera: 5
 --- !u!61 &6933813003004904154
 BoxCollider2D:
   m_ObjectHideFlags: 0

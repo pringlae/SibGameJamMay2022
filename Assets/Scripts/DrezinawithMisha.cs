@@ -119,8 +119,6 @@ public class DrezinawithMisha : MonoBehaviour
     void GetOff()
     {
         player.SetActive(true);
-        camera.transform.parent = player.transform;
-        camera.transform.localPosition = new Vector3(0, 0.5f, -10);
         animator.SetBool("Empty", true);
         animator.SetInteger("moving", 0);
         empty = true;
@@ -134,8 +132,6 @@ public class DrezinawithMisha : MonoBehaviour
     void GetOn()
     {
         player.SetActive(false);
-        camera.transform.parent = transform;
-        camera.transform.localPosition = new Vector3(0, 0.295f, -10);
         animator.SetBool("Empty", false);
         empty = false;
         outline.enabled = false;
