@@ -9,6 +9,8 @@ public class UIController : MonoBehaviour
     public Text[] keyDescriptions = new Text[0];
     public GameObject drezinaButtons;
     public Image drezinaButtonUp, drezinaButtonDown;
+    public Text coinsText, timeText;
+    public Image clockArrow;
 
     private Color disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
 
@@ -16,6 +18,8 @@ public class UIController : MonoBehaviour
     {
         Empty, MovingDrezina, DrezinaIdle, OffDrezina, NearDrezina
     }
+
+    public int Coins { get; private set; } = 0;
 
     public InfoButtonsState infoButtonsState { get; private set; } = InfoButtonsState.Empty;
 
@@ -81,5 +85,17 @@ public class UIController : MonoBehaviour
         {
             keyNames[i].transform.parent.gameObject.SetActive(i < count);
         }
+    }
+
+    public void AddCoins(int coins)
+    {
+        Coins += coins;
+        coinsText.text = Coins.ToString();
+    }
+
+    public void SetTime(int dayIndex, int dayHour)
+    {
+        timeText.text = "День " + dayIndex + ", " + dayHour + ":00";
+        clockArrow.transform.eulerAngles = new Vector3(0, 0, 270 - 180 / 6 * dayHour);
     }
 }

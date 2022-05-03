@@ -15,7 +15,11 @@ public class DrezinawithMisha : MonoBehaviour
     public bool MovingRight
     {
         get => !renderer.flipX;
-        set => renderer.flipX = !value;
+        set 
+        {
+            Debug.Log(value);
+            renderer.flipX = !value;
+        }
     }
 
     public bool Moving => myRigidbody.velocity.magnitude > 0.05f;
@@ -28,14 +32,12 @@ public class DrezinawithMisha : MonoBehaviour
     public GameObject camera;
     public UIController ui;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         outline = GetComponent<SpriteOutline>();
-
-        Reset();
     }
 
     // Update is called once per frame
@@ -80,8 +82,9 @@ public class DrezinawithMisha : MonoBehaviour
 
     }
 
-    void Reset()
+    public void Reset()
     {
+        myRigidbody.velocity = Vector2.zero;
         empty = true;
         inputReceived = false;
         animator.SetBool("Empty", true);
@@ -92,6 +95,8 @@ public class DrezinawithMisha : MonoBehaviour
 
     void Update()
     {
+        if (onHouseBlock) return;
+
         if (!empty)
         {
             if (Moving)
@@ -131,6 +136,7 @@ public class DrezinawithMisha : MonoBehaviour
 
     void GetOn()
     {
+        DaysController.Instance.StartTime();
         player.SetActive(false);
         animator.SetBool("Empty", false);
         empty = false;
@@ -147,9 +153,11 @@ public class DrezinawithMisha : MonoBehaviour
             ui.SetInfoButtonsState(UIController.InfoButtonsState.NearDrezina);
             outline.enabled = true;
         }
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer == 7 && !onHouseBlock) // house
         {
             onHouseBlock = true;
+            ui.SetMovementState(false);
+            DaysController.Instance.EndDay();
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -159,10 +167,6 @@ public class DrezinawithMisha : MonoBehaviour
             playerInRange = false;
             ui.SetInfoButtonsState(UIController.InfoButtonsState.OffDrezina);
             outline.enabled = false;
-        }
-        if (other.gameObject.layer == 7)
-        {
-            onHouseBlock = true;
         }
     }
 }

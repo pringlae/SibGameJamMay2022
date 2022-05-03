@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &108711326375723438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108711326375723436}
+  - component: {fileID: 108711326375723437}
+  m_Layer: 0
+  m_Name: DaysController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108711326375723436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108711326375723438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.781657, y: -0.31626403, z: -1.1312048}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &108711326375723437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108711326375723438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3f7f10b33b58744ac95af8be7b48c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  days:
+  - InvertDirection: 0
+    StartDayLetterText: 
+  - InvertDirection: 1
+    StartDayLetterText: 
+  - InvertDirection: 0
+    StartDayLetterText: 
+  - InvertDirection: 1
+    StartDayLetterText: 
+  animator: {fileID: 0}
+  hourLength: 10
+  hourRange: {x: 9, y: 21}
+  stationCollider: {fileID: 0}
+  houseCollider: {fileID: 0}
+  ui: {fileID: 0}
+  bear: {fileID: 0}
+  bearAPos: {x: -15.9, y: -0.1, z: 0}
+  bearBPos: {x: 14.3, y: -0.1, z: 0}
+  drezina: {fileID: 0}
+  drezinaAPos: {x: -14.9, y: 0.106, z: 0}
+  drezinaBPos: {x: 14, y: 0.106, z: 0}
