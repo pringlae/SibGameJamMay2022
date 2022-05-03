@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 8691355408788466305}
   - component: {fileID: 320846497}
   m_Layer: 5
-  m_Name: InputHelpCanvas
+  m_Name: MainCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
