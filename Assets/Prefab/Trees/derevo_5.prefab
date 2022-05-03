@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf9d45e010630843b9b53ffca676d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameLength: 1
+  frameLength: 2
   frames:
   - {fileID: 21300000, guid: 8d8ec63b2a291634ab68ce10d1a48905, type: 3}
   - {fileID: 21300000, guid: 3914b42af21f3064098184455ac0bd04, type: 3}
