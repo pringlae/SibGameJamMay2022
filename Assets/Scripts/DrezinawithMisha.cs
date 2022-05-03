@@ -115,7 +115,7 @@ public class DrezinawithMisha : MonoBehaviour
 
         if (empty && playerInRange)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!player.itemOnHand && Input.GetKeyDown(KeyCode.Space))
             {
                 GetOn();
                 return;
@@ -125,12 +125,14 @@ public class DrezinawithMisha : MonoBehaviour
                 if (player.itemOnHand)
                 {
                     player.PutItem();
-                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Take, true); 
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Take, true);
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, true);
                 }
                 else
                 {
                     player.TakeItem(player.itemHeld);
                     UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Put, true); 
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, false);
                 }
                 return;
             }
@@ -168,7 +170,8 @@ public class DrezinawithMisha : MonoBehaviour
         if (other.gameObject.layer == 6) // player
         {
             playerInRange = true;
-            UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, true);
+            outline.enabled = true;
+
             if (player.itemHeld != null)
             {
                 if (player.itemOnHand)
@@ -176,7 +179,8 @@ public class DrezinawithMisha : MonoBehaviour
                 else
                     UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Take, true);
             }
-            outline.enabled = true;
+            else
+                UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, true);
         }
         if (other.gameObject.layer == 7 && !onHouseBlock) // house
         {
@@ -192,7 +196,8 @@ public class DrezinawithMisha : MonoBehaviour
         if (other.gameObject.layer == 6) // player
         {
             playerInRange = false;
-            UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, false);
+            outline.enabled = false;
+
             if (player.itemHeld != null)
             {
                 if (player.itemOnHand)
@@ -200,7 +205,8 @@ public class DrezinawithMisha : MonoBehaviour
                 else
                     UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Take, false);
             }
-            outline.enabled = false;
+            else
+                UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, false);
         }
     }
 }

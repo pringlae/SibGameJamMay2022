@@ -19,7 +19,7 @@ public class BearMovement : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public bool itemOnHand => itemHeld.transform.parent == transform;
+    public bool itemOnHand => itemHeld != null && itemHeld.transform.parent == transform;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -47,6 +47,13 @@ public class BearMovement : MonoBehaviour
 
     public void TakeItem(SceneInteraction item)
     {
+        if (itemHeld != null && itemHeld != item)
+        {
+            itemHeld.transform.parent = null;
+            itemHeld.transform.position = new Vector3(itemHeld.transform.position.x, -0.3f, itemHeld.transform.position.z);
+            itemHeld.enabled = true;
+            itemHeld.SetNearBy();
+        }
         itemHeld = item;
         itemHeld.transform.parent = transform;
         itemHeld.transform.localPosition = new Vector3(0.02f, -0.02f, 0);
