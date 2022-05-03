@@ -21,9 +21,10 @@ public class DaysController : MonoBehaviour
     public Vector2Int hourRange = new Vector2Int(10, 17);
     private float hourTimer;
     private bool timeCounting;
+    public bool letterTaken;
     private int dayHour, dayIndex;
+    private Station currentStation;
     public Station stationA, stationB;
-    public UIController ui;
     public BearMovement bear;
     public Vector3 bearAPos, bearBPos;
     public DrezinawithMisha drezina;
@@ -41,28 +42,53 @@ public class DaysController : MonoBehaviour
         dayIndex = i + 1;
         animator.SetTrigger("dayStart");
         timeCounting = false;
+        letterTaken = false;
         dayHour = hourRange.x;
         UpdateTimeText();
 
         Day currentDay = days[i];
-        stationA.Collider.enabled = currentDay.InvertDirection;
-        stationB.Collider.enabled = !currentDay.InvertDirection;
+        if (currentDay.InvertDirection)
+        {
+            currentStation = stationB;
+            stationA.SetEndStation();
+            stationB.SetStartStation();
+        }
+        else
+        {
+            currentStation = stationA;
+            stationB.SetEndStation();
+            stationA.SetStartStation();
+        }
         bear.transform.position = currentDay.InvertDirection ? bearBPos : bearAPos;
         drezina.transform.position = currentDay.InvertDirection ? drezinaBPos : drezinaAPos;
         drezina.MovingRight = !currentDay.InvertDirection;
         drezina.Reset();
+        drezina.enabled = false;
     }
 
     public void StartTime()
     {
         if (timeCounting) return;
 
+        currentStation.DrezinaBubble.gameObject.SetActive(false);
         hourTimer = hourLength;
         timeCounting = true;
     }
 
+    public void TakeLetter()
+    {
+        letterTaken = true;
+        currentStation.OnLetterTaken();
+        drezina.enabled = true;
+    }
+
     void Update()
     {
+        if (!letterTaken && currentStation.LetterBox.BearNearBy && Input.GetKeyDown(KeyCode.E))
+        {
+            TakeLetter();
+            return;
+        }
         if (timeCounting)
         {
             hourTimer -= Time.deltaTime;
@@ -93,7 +119,7 @@ public class DaysController : MonoBehaviour
 
     private void UpdateTimeText()
     {
-        ui.SetTime(dayIndex, dayHour);
+        UIController.Instance.SetTime(dayIndex, dayHour);
     }
     
 }

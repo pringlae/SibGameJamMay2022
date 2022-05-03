@@ -55,13 +55,13 @@ MonoBehaviour:
   animator: {fileID: 0}
   hourLength: 10
   hourRange: {x: 9, y: 21}
+  letterTaken: 0
   stationA: {fileID: 0}
   stationB: {fileID: 0}
-  ui: {fileID: 0}
   bear: {fileID: 0}
   bearAPos: {x: -12.743, y: -0.1, z: 0}
   bearBPos: {x: 13.926, y: -0.1, z: 0}
   drezina: {fileID: 0}
-  drezinaAPos: {x: -11.901, y: 0.106, z: 0}
-  drezinaBPos: {x: 12.94, y: 0.106, z: 0}
+  drezinaAPos: {x: -11.6, y: 0.106, z: 0}
+  drezinaBPos: {x: 12.75, y: 0.106, z: 0}
   animals: []

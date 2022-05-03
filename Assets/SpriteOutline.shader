@@ -87,6 +87,11 @@ Shader "Sprites/Outline"
 				return color;
 			}
 
+			float a(sampler2D tex, float2 coord)
+			{
+				return tex2D(tex, coord).a * (coord.x >= 0) * (coord.x <= 1) * (coord.y >= 0) * (coord.y <= 1) ;
+			}
+
 			fixed4 frag(v2f IN) : SV_Target
 			{
 				fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
@@ -94,14 +99,14 @@ Shader "Sprites/Outline"
 				// If outline is enabled and there is a pixel, try to draw an outline.
 				if (_Outline > 0 && _OutlineSize > 0 && c.a != 0) {
 					float totalAlpha = 
-						tex2D(_MainTex, IN.texcoord + fixed2(0, _MainTex_TexelSize.y)).a *
-						tex2D(_MainTex, IN.texcoord - fixed2(0, _MainTex_TexelSize.y)).a *
-						tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, 0)).a *
-						tex2D(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, 0)).a *
-						tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, _MainTex_TexelSize.y)).a *
-						tex2D(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, _MainTex_TexelSize.y)).a *
-						tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, -_MainTex_TexelSize.y)).a *
-						tex2D(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, -_MainTex_TexelSize.y)).a;
+						a(_MainTex, IN.texcoord + fixed2(0, _MainTex_TexelSize.y)) *
+						a(_MainTex, IN.texcoord - fixed2(0, _MainTex_TexelSize.y)) *
+						a(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, 0)) *
+						a(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, 0)) *
+						a(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, _MainTex_TexelSize.y)) *
+						a(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, _MainTex_TexelSize.y)) *
+						a(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x, -_MainTex_TexelSize.y)) *
+						a(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x, -_MainTex_TexelSize.y));
 
 					if (totalAlpha == 0) {
 						c.rgb = lerp(c.rgb, _OutlineColor, _OutlineColor.a);

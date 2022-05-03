@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4074988897075921994}
   - component: {fileID: 2035584964668593719}
   - component: {fileID: 1783514988278119227}
+  - component: {fileID: 1597319087948042492}
   m_Layer: 0
   m_Name: beaver_0
   m_TagString: Untagged
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1597319087948042492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258925136191032393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaa986f30b4df940830c451d68e4a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

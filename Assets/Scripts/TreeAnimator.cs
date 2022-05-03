@@ -16,8 +16,8 @@ public class TreeAnimator : MonoBehaviour
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
-        untilNext = frameLength;
-        currentFrame = 0;
+        untilNext = Random.value * frameLength;
+        currentFrame = Random.Range(0, frames.Length);
         renderer.sprite = frames[currentFrame];
     }
 

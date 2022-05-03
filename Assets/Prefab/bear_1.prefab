@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   camera: {fileID: 0}
-  maxMoveFromCamera: 5
+  maxMoveFromCamera: 1.2
 --- !u!61 &6933813003004904154
 BoxCollider2D:
   m_ObjectHideFlags: 0

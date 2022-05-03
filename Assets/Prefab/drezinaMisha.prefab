@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1136949071}
   - component: {fileID: 1136949075}
   - component: {fileID: 1136949070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: drezinaMisha
   m_TagString: Untagged
   m_Icon: {fileID: 0}

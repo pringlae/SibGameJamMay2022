@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public static UIController Instance;
+
     public Text[] keyNames = new Text[0];
     public Text[] keyDescriptions = new Text[0];
     public GameObject drezinaButtons;
@@ -16,12 +18,17 @@ public class UIController : MonoBehaviour
 
     public enum InfoButtonsState
     {
-        Empty, MovingDrezina, DrezinaIdle, OffDrezina, NearDrezina
+        Empty, UseItem, MovingDrezina, DrezinaIdle, OffDrezina, NearDrezina
     }
 
     public int Coins { get; private set; } = 0;
 
     public InfoButtonsState infoButtonsState { get; private set; } = InfoButtonsState.Empty;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void SetInfoButtonsState(InfoButtonsState state)
     {
@@ -33,6 +40,11 @@ public class UIController : MonoBehaviour
         {
             case InfoButtonsState.Empty:
                 ActivateButtons(0);
+                break;
+            case InfoButtonsState.UseItem:
+                ActivateButtons(1);
+                keyNames[0].text = "E";
+                keyDescriptions[0].text = "Использовать";
                 break;
             case InfoButtonsState.MovingDrezina:
                 ActivateButtons(1);
