@@ -68,7 +68,7 @@ public class BearMovement : MonoBehaviour
 
     public void ClearItem()
     {
-        itemHeld.gameObject.SetActive(false);
+        itemHeld.enabled = false;
         itemHeld = null;
     }
 }

@@ -8,6 +8,8 @@ public class Beaver : Animal
 
     private int logsNeeded;
 
+    protected override string className => "Beaver";
+
     void Start()
     {
         logsNeeded = logs.Count;
@@ -31,9 +33,11 @@ public class Beaver : Animal
 
     public override void OnUse(BearMovement bear)
     {
-        logsNeeded--;
         logs.Remove(bear.itemHeld);
+        bear.itemHeld.transform.parent = transform;
+        bear.itemHeld.transform.localPosition = new Vector3(0.07f, -0.04f, 0f) * logsNeeded;
         bear.ClearItem();
+        logsNeeded--;
         if (logsNeeded <= 0)
             base.OnUse(bear);
     }

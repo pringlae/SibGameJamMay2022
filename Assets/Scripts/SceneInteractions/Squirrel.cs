@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Squirrel : Animal
 {
-    public override void OnDayStart(int dayIndex)
-    {
-        
-    }
-    public override void OnDayEnd(int dayIndex)
-    {
-        
-    }
+    protected override string className => "Squirrel";
 }
     
