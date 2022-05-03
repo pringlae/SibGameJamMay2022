@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6164388857767242227}
   - component: {fileID: 7929866063923238777}
+  - component: {fileID: 7834963815397764388}
   m_Layer: 0
   m_Name: derevo_4
   m_TagString: Untagged
@@ -82,3 +83,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7834963815397764388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659629596585556577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf9d45e010630843b9b53ffca676d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameLength: 1
+  frames:
+  - {fileID: 21300000, guid: 76a1d19734948ae438775be213906604, type: 3}
+  - {fileID: 21300000, guid: 04e1bc4c7e9001d418f6e104c99295eb, type: 3}
+  - {fileID: 21300000, guid: af2ecb930e452e94ba41e885e7a3bc35, type: 3}
