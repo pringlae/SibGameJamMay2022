@@ -12,9 +12,10 @@ public class UIController : MonoBehaviour
     public Image drezinaButtonUp, drezinaButtonDown;
     public Text coinsText, timeText;
     public Image clockArrow;
-    public GameObject panelInTime, panelOutofTime;
+    public GameObject panelInTime, panelOutofTime, pasecaPanel;
 
     private Color disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
+    private bool pasecaOpened = false;
 
     public int Coins { get; private set; } = 0;
 
@@ -100,6 +101,11 @@ public class UIController : MonoBehaviour
     {
         Coins += coins;
         coinsText.text = Coins.ToString();
+        if (Coins >= 100 && !pasecaOpened)
+        {
+            pasecaPanel.gameObject.SetActive(true);
+            pasecaOpened = true;
+        }
     }
 
     public void SetTime(int dayIndex, int dayHour)

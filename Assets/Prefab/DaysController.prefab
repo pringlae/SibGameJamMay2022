@@ -45,13 +45,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   days:
   - InvertDirection: 0
-    StartDayLetterText: 
   - InvertDirection: 1
-    StartDayLetterText: 
   - InvertDirection: 0
-    StartDayLetterText: 
   - InvertDirection: 1
-    StartDayLetterText: 
+  - InvertDirection: 0
+  - InvertDirection: 1
+  - InvertDirection: 0
+  - InvertDirection: 1
+  - InvertDirection: 0
+  - InvertDirection: 1
   animator: {fileID: 0}
   hourLength: 10
   hourRange: {x: 9, y: 21}
@@ -64,4 +66,4 @@ MonoBehaviour:
   drezina: {fileID: 0}
   drezinaAPos: {x: -11.6, y: 0.106, z: 0}
   drezinaBPos: {x: 12.75, y: 0.106, z: 0}
-  animals: []
+  interactors: []

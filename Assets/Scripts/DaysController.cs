@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DaysController : MonoBehaviour
@@ -10,8 +11,7 @@ public class DaysController : MonoBehaviour
     [System.Serializable]
     public class Day
     {
-        public bool InvertDirection;
-        public string StartDayLetterText;
+        public bool InvertDirection = false;
     }
 
     public List<Day> days = new List<Day>();
@@ -136,7 +136,20 @@ public class DaysController : MonoBehaviour
     {
         UIController.Instance.panelInTime.SetActive(false);
         UIController.Instance.panelOutofTime.SetActive(false);
-        StartCoroutine(NextDayImpl());
+        if (dayIndex < days.Count)
+        {
+            StartCoroutine(NextDayImpl());
+        }
+        else
+        {
+            if (Animal.rescued.Count == 0)
+            {
+                days.Add(new Day());
+                StartCoroutine(NextDayImpl());
+            }
+            else
+                SceneManager.LoadScene("Final");
+        }
     }
 
     private IEnumerator NextDayImpl()
