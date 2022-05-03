@@ -54,7 +54,6 @@ MonoBehaviour:
   moveKeyPressTime: 0.5
   player: {fileID: 0}
   camera: {fileID: 0}
-  ui: {fileID: 0}
 --- !u!212 &2219408773219089888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -210,4 +209,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fd93414c81316428be8a45d5d71456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 0.50980395}
+  color: {r: 1, g: 1, b: 1, a: 1}

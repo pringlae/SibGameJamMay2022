@@ -28,8 +28,8 @@ public class DrezinawithMisha : MonoBehaviour
     private bool playerInRange, empty, inputReceived, onHouseBlock;
     private float movePressKeyTimer = 0;
     private bool topKey = false;
-    public GameObject player;
-    public GameObject camera;
+    public BearMovement player;
+    public new GameObject camera;
 
     void Awake()
     {
@@ -87,7 +87,7 @@ public class DrezinawithMisha : MonoBehaviour
 
         myRigidbody.velocity = Vector2.zero;
         inputReceived = false;
-        UIController.Instance.SetInfoButtonsState(UIController.InfoButtonsState.OffDrezina);
+        UIController.Instance.SetInfoButtonsState(UIController.InfoButton.None);
         outline.enabled = false;
         onHouseBlock = false;
     }
@@ -100,47 +100,64 @@ public class DrezinawithMisha : MonoBehaviour
         {
             if (Moving)
             {
-                UIController.Instance.SetInfoButtonsState(UIController.InfoButtonsState.MovingDrezina);
+                UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Brake, true);
                 if (Input.GetKey(KeyCode.Space))
                     myRigidbody.velocity = Vector3.MoveTowards(myRigidbody.velocity, Vector3.zero, brakingSpeed * Time.deltaTime);
             }
             else
             {
-                UIController.Instance.SetInfoButtonsState(UIController.InfoButtonsState.DrezinaIdle);
+                UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOff, true);
                 if (Input.GetKeyDown(KeyCode.Space))
                     GetOff();
             }
             return;
         }
 
-        if (empty && playerInRange && Input.GetKeyDown(KeyCode.Space))
+        if (empty && playerInRange)
         {
-            GetOn();
-            return;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GetOn();
+                return;
+            }
+            if (player.itemHeld != null && Input.GetKeyDown(KeyCode.E))
+            {
+                if (player.itemOnHand)
+                {
+                    player.PutItem();
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Take, true); 
+                }
+                else
+                {
+                    player.TakeItem(player.itemHeld);
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Put, true); 
+                }
+                return;
+            }
         }
     }
 
     void GetOff()
     {
-        player.SetActive(true);
+        player.gameObject.SetActive(true);
         animator.SetBool("Empty", true);
         animator.SetInteger("moving", 0);
         empty = true;
         outline.enabled = true;
 
         player.transform.position = new Vector3(transform.position.x, -0.1f, transform.position.z);
-        UIController.Instance.SetInfoButtonsState(UIController.InfoButtonsState.NearDrezina);
+        UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, true);
         UIController.Instance.SetMovementState(false);
     }
 
     void GetOn()
     {
         DaysController.Instance.StartTime();
-        player.SetActive(false);
+        player.gameObject.SetActive(false);
         animator.SetBool("Empty", false);
         empty = false;
         outline.enabled = false;
-        UIController.Instance.SetInfoButtonsState(UIController.InfoButtonsState.DrezinaIdle);
+        UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOff, true);
         UIController.Instance.SetMovementState(true, topKey);
     }
     
@@ -151,7 +168,14 @@ public class DrezinawithMisha : MonoBehaviour
         if (other.gameObject.layer == 6) // player
         {
             playerInRange = true;
-            UIController.Instance.SetInfoButtonsState(UIController.InfoButtonsState.NearDrezina);
+            UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, true);
+            if (player.itemHeld != null)
+            {
+                if (player.itemOnHand)
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Put, true); 
+                else
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Take, true);
+            }
             outline.enabled = true;
         }
         if (other.gameObject.layer == 7 && !onHouseBlock) // house
@@ -168,7 +192,14 @@ public class DrezinawithMisha : MonoBehaviour
         if (other.gameObject.layer == 6) // player
         {
             playerInRange = false;
-            UIController.Instance.SetInfoButtonsState(UIController.InfoButtonsState.OffDrezina);
+            UIController.Instance.SetInfoButtonsState(UIController.InfoButton.GetOn, false);
+            if (player.itemHeld != null)
+            {
+                if (player.itemOnHand)
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Put, false); 
+                else
+                    UIController.Instance.SetInfoButtonsState(UIController.InfoButton.Take, false);
+            }
             outline.enabled = false;
         }
     }

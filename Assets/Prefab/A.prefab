@@ -302,6 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b3753d9b16af74bb03704f6b3cbb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubble: {fileID: 3198326274120039742}
+  interactionName: 3
 --- !u!95 &5878627576561420663
 Animator:
   serializedVersion: 3

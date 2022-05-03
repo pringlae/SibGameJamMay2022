@@ -29,7 +29,7 @@ public class DaysController : MonoBehaviour
     public Vector3 bearAPos, bearBPos;
     public DrezinawithMisha drezina;
     public Vector3 drezinaAPos, drezinaBPos;
-    public Animal[] animals;
+    public SceneInteraction[] interactors;
 
     void Start()
     {
@@ -64,6 +64,9 @@ public class DaysController : MonoBehaviour
         drezina.MovingRight = !currentDay.InvertDirection;
         drezina.Reset();
         drezina.enabled = false;
+
+        foreach (var interactor in interactors)
+            interactor.OnDayStart(dayIndex);
     }
 
     public void StartTime()
@@ -84,6 +87,12 @@ public class DaysController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+            foreach (var interactor in interactors)
+            {
+                if (interactor.BearNearBy) interactor.OnUse(bear);
+            }
+            
         if (!letterTaken && currentStation.LetterBox.BearNearBy && Input.GetKeyDown(KeyCode.E))
         {
             TakeLetter();
@@ -106,8 +115,8 @@ public class DaysController : MonoBehaviour
     public void EndDay()
     {
         animator.SetTrigger("dayFinish");
-        foreach (var animal in animals)
-            animal.OnDayEnd(dayIndex);
+        foreach (var interactor in interactors)
+            interactor.OnDayEnd(dayIndex);
         StartCoroutine(NextDay());
     }
 

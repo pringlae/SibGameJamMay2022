@@ -7,7 +7,6 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance;
 
-    public Text[] keyNames = new Text[0];
     public Text[] keyDescriptions = new Text[0];
     public GameObject drezinaButtons;
     public Image drezinaButtonUp, drezinaButtonDown;
@@ -16,54 +15,58 @@ public class UIController : MonoBehaviour
 
     private Color disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
 
-    public enum InfoButtonsState
-    {
-        Empty, UseItem, MovingDrezina, DrezinaIdle, OffDrezina, NearDrezina
-    }
-
     public int Coins { get; private set; } = 0;
 
-    public InfoButtonsState infoButtonsState { get; private set; } = InfoButtonsState.Empty;
+    public enum InfoButton
+    {
+        Brake, GetOff, GetOn, Take, Water, Put, Give, None
+    }
+
+    [System.Serializable]
+    public class KeyDescription
+    {
+        public InfoButton infoButton;
+        public string description;
+    }
+    public List<KeyDescription> descriptions = new List<KeyDescription>();
 
     void Awake()
     {
         Instance = this;
     }
 
-    public void SetInfoButtonsState(InfoButtonsState state)
+    public void SetInfoButtonsState(InfoButton type, bool enabled = true)
     {
-        if (infoButtonsState == state) return;
-
-        infoButtonsState = state;
-        Debug.Log("State changed: " + state);
-        switch (infoButtonsState)
+        if (type == InfoButton.None)
         {
-            case InfoButtonsState.Empty:
-                ActivateButtons(0);
+            keyDescriptions[0].transform.parent.gameObject.SetActive(false);
+            keyDescriptions[1].transform.parent.gameObject.SetActive(false);
+            return;
+        }
+        KeyDescription desc = null;
+        foreach (var d in descriptions)
+            if (d.infoButton == type)
+            {
+                desc = d;
                 break;
-            case InfoButtonsState.UseItem:
-                ActivateButtons(1);
-                keyNames[0].text = "E";
-                keyDescriptions[0].text = "Использовать";
+            }
+
+        switch (type)
+        {
+            case InfoButton.Brake:
+            case InfoButton.GetOff:
+            case InfoButton.GetOn:
+                keyDescriptions[0].transform.parent.gameObject.SetActive(enabled);
+                keyDescriptions[0].text = desc.description;
                 break;
-            case InfoButtonsState.MovingDrezina:
-                ActivateButtons(1);
-                keyNames[0].text = "Space";
-                keyDescriptions[0].text = "Тормоз";
+            case InfoButton.Take:
+            case InfoButton.Water:
+            case InfoButton.Put:
+            case InfoButton.Give:
+                keyDescriptions[1].transform.parent.gameObject.SetActive(enabled);
+                keyDescriptions[1].text = desc.description;
                 break;
-            case InfoButtonsState.DrezinaIdle:
-                ActivateButtons(1);
-                keyNames[0].text = "Space";
-                keyDescriptions[0].text = "Слезть";
-                break;
-            case InfoButtonsState.OffDrezina:
-                ActivateButtons(0);
-                break;
-            case InfoButtonsState.NearDrezina:
-                ActivateButtons(1);
-                keyNames[0].text = "Space";
-                keyDescriptions[0].text = "Залезть";
-                break;
+
         }
     }
 
@@ -88,14 +91,6 @@ public class UIController : MonoBehaviour
         {
             drezinaButtonDown.color = Color.white;
             drezinaButtonUp.color = disabledColor;
-        }
-    }
-
-    private void ActivateButtons(int count)
-    {
-        for (int i = 0; i < keyNames.Length; i++)
-        {
-            keyNames[i].transform.parent.gameObject.SetActive(i < count);
         }
     }
 
