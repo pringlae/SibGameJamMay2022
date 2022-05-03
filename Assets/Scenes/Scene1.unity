@@ -18231,6 +18231,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2219408773219089900, guid: 7e5377d587bd5df478df49a932faebfc, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408773219089900, guid: 7e5377d587bd5df478df49a932faebfc, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 405178676}
@@ -18249,6 +18253,10 @@ PrefabInstance:
     - target: {fileID: 2219408773219089900, guid: 7e5377d587bd5df478df49a932faebfc, type: 3}
       propertyPath: CameraOff
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408773219089900, guid: 7e5377d587bd5df478df49a932faebfc, type: 3}
+      propertyPath: moveKeyPressTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e5377d587bd5df478df49a932faebfc, type: 3}
