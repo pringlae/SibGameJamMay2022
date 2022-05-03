@@ -11075,7 +11075,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cacf017c4eef7da48b891f745c6509dc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b95e887b2a1626543b4c0038fe8ade28, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.521
   m_Pitch: 1
@@ -29084,7 +29084,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E"
+  m_Text: "\u0417\u0430\u043D\u043E\u0432\u043E"
 --- !u!222 &1765115160
 CanvasRenderer:
   m_ObjectHideFlags: 0
