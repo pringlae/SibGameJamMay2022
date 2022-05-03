@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     public Text coinsText, timeText;
     public Image clockArrow;
     public GameObject panelInTime, panelOutofTime, pasecaPanel;
+    public Image nightFilter;
 
     private Color disabledColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
     private bool pasecaOpened = false;
@@ -21,7 +22,7 @@ public class UIController : MonoBehaviour
 
     public enum InfoButton
     {
-        Brake, GetOff, GetOn, Take, Water, Put, Give, PutAway, None
+        Brake, GetOff, GetOn, Take, Water, Put, Give, PutAway, Eat, None
     }
 
     [System.Serializable]
@@ -66,6 +67,7 @@ public class UIController : MonoBehaviour
             case InfoButton.Put:
             case InfoButton.Give:
             case InfoButton.PutAway:
+            case InfoButton.Eat:
                 keyDescriptions[1].transform.parent.gameObject.SetActive(enabled);
                 keyDescriptions[1].text = desc.description;
                 break;
@@ -112,5 +114,6 @@ public class UIController : MonoBehaviour
     {
         timeText.text = "День " + dayIndex + ", " + dayHour + ":00";
         clockArrow.transform.eulerAngles = new Vector3(0, 0, 270 - 180 / 6 * dayHour);
+        nightFilter.color = new Color(1f, 1f, 1f, (dayHour - 16) / 5.0f);
     }
 }
