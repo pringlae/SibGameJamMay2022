@@ -84,10 +84,10 @@ public class DrezinawithMisha : MonoBehaviour
 
     public void Reset()
     {
+        GetOff();
+
         myRigidbody.velocity = Vector2.zero;
-        empty = true;
         inputReceived = false;
-        animator.SetBool("Empty", true);
         ui.SetInfoButtonsState(UIController.InfoButtonsState.OffDrezina);
         outline.enabled = false;
         onHouseBlock = false;

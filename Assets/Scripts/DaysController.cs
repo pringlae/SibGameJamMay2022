@@ -12,7 +12,6 @@ public class DaysController : MonoBehaviour
     {
         public bool InvertDirection;
         public string StartDayLetterText;
-
     }
 
     public List<Day> days = new List<Day>();
@@ -23,12 +22,13 @@ public class DaysController : MonoBehaviour
     private float hourTimer;
     private bool timeCounting;
     private int dayHour, dayIndex;
-    public BoxCollider2D stationCollider, houseCollider;
+    public Station stationA, stationB;
     public UIController ui;
     public BearMovement bear;
     public Vector3 bearAPos, bearBPos;
     public DrezinawithMisha drezina;
     public Vector3 drezinaAPos, drezinaBPos;
+    public Animal[] animals;
 
     void Start()
     {
@@ -45,8 +45,8 @@ public class DaysController : MonoBehaviour
         UpdateTimeText();
 
         Day currentDay = days[i];
-        stationCollider.enabled = currentDay.InvertDirection;
-        houseCollider.enabled = !currentDay.InvertDirection;
+        stationA.Collider.enabled = currentDay.InvertDirection;
+        stationB.Collider.enabled = !currentDay.InvertDirection;
         bear.transform.position = currentDay.InvertDirection ? bearBPos : bearAPos;
         drezina.transform.position = currentDay.InvertDirection ? drezinaBPos : drezinaAPos;
         drezina.MovingRight = !currentDay.InvertDirection;
@@ -79,8 +79,9 @@ public class DaysController : MonoBehaviour
 
     public void EndDay()
     {
-        Debug.Log("hi");
         animator.SetTrigger("dayFinish");
+        foreach (var animal in animals)
+            animal.OnDayEnd(dayIndex);
         StartCoroutine(NextDay());
     }
 
