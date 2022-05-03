@@ -11,6 +11,12 @@ public class Animal : SceneInteraction
 
     protected virtual string className { get; }
 
+    public override void OnDayStart(int dayIndex)
+    {
+        if (dayIndex >= 11)
+            gameObject.SetActive(false);
+    }
+
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (!enabled || other.gameObject.layer != 6) return;
@@ -28,6 +34,7 @@ public class Animal : SceneInteraction
         bear.itemHeld.transform.localPosition = new Vector3(0.1f, -0.05f, 0f);
         bear.ClearItem();
         questCompleted = true;
+        Animal.rescued[className] = true;
         UIController.Instance.AddCoins(20);
     }
 }

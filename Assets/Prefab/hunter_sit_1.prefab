@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 446f46c43412fca449e4bc9d2eb27c5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68380561c8723784993e5cb8a3f92413, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 6031173541335428371}
   - component: {fileID: 573795491566154787}
   - component: {fileID: 51842165360263518}
+  - component: {fileID: 2065763611493318633}
   m_Layer: 0
   m_Name: hunter_sit_1
   m_TagString: Untagged
@@ -310,3 +311,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble: {fileID: 0}
   interactionName: 0
+  animator: {fileID: 573795491566154787}
+  trigger: {fileID: 2065763611493318633}
+--- !u!61 &2065763611493318633
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658022822482993549}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.24835491, y: 0.3664253}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.14, y: 0.21}
+    newSize: {x: 0.14, y: 0.21}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1415622, y: 0.7474236}
+  m_EdgeRadius: 0

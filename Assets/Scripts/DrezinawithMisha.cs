@@ -17,7 +17,6 @@ public class DrezinawithMisha : MonoBehaviour
         get => !renderer.flipX;
         set 
         {
-            Debug.Log(value);
             renderer.flipX = !value;
         }
     }

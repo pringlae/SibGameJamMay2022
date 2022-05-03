@@ -38645,11 +38645,11 @@ PrefabInstance:
       objectReference: {fileID: 1459884574}
     - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: days.Array.data[0].InvertDirection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: days.Array.data[2].InvertDirection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108711326375723438, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: m_Name

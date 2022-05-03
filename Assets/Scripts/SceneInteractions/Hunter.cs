@@ -5,30 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class Hunter : SceneInteraction
 {
-    private Animator animator;
-
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public Animator animator;
+    public BoxCollider2D trigger;
 
     public override void OnDayStart(int dayIndex)
     {
-        if (dayIndex == 1)
+        if (dayIndex == 11)
+        {
+            trigger.enabled = true;
             animator.SetTrigger("StandUp");
+            enabled = true;
+        }
+        else
+        {
+            trigger.enabled = false;
+            enabled = false;
+        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (!enabled || other.gameObject.layer != 6) return;
-
+        enabled = true;
+        UIController.Instance.SetInfoButtonsState(UIController.InfoButton.None);
         Animal.rescued["Hunter"] = true;
         StartCoroutine(ToFinal());
     }
 
     private IEnumerator ToFinal()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Final");
     }
 }

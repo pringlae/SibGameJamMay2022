@@ -8,6 +8,7 @@ public class FinalSceneAnimalsCheck : MonoBehaviour
     public GameObject hare;
     public GameObject beaver;
     public GameObject squirrel;
+    public GameObject hunter;
 
 
     void Start()
@@ -17,6 +18,7 @@ public class FinalSceneAnimalsCheck : MonoBehaviour
         hare.gameObject.SetActive(Rescued("Hare"));
         beaver.gameObject.SetActive(Rescued("Beaver"));
         squirrel.gameObject.SetActive(Rescued("Squirrel"));
+        hunter.gameObject.SetActive(Rescued("Hunter"));
     }
 
     private bool Rescued(string name)
