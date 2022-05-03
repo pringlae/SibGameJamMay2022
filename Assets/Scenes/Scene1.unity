@@ -15102,11 +15102,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1013089258 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3198326275441745785, guid: 8796f5e4eaf2c1b499f8a29ee74f98b5, type: 3}
-  m_PrefabInstance: {fileID: 3198326275917896851}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1030272097
 GameObject:
   m_ObjectHideFlags: 0
@@ -28172,11 +28167,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2022852786 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3276999173841028228, guid: a31468922cd2d864db6ac4eda1ec9cf1, type: 3}
-  m_PrefabInstance: {fileID: 3276999172642393142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2024830732
 GameObject:
   m_ObjectHideFlags: 0
@@ -29265,34 +29255,6 @@ PrefabInstance:
       propertyPath: stationB
       value: 
       objectReference: {fileID: 3276999172642393143}
-    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
-      propertyPath: bearAPos.x
-      value: -12.743
-      objectReference: {fileID: 0}
-    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
-      propertyPath: bearBPos.x
-      value: 13.926
-      objectReference: {fileID: 0}
-    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
-      propertyPath: drezinaAPos.x
-      value: -11.901
-      objectReference: {fileID: 0}
-    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
-      propertyPath: drezinaBPos.x
-      value: 12.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
-      propertyPath: houseCollider
-      value: 
-      objectReference: {fileID: 2022852786}
-    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
-      propertyPath: stationCollider
-      value: 
-      objectReference: {fileID: 1013089258}
-    - target: {fileID: 108711326375723437, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
-      propertyPath: days.Array.data[0].InvertDirection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 108711326375723438, guid: bf42ee299e80f8043b061155e38c4382, type: 3}
       propertyPath: m_Name
       value: DaysController
