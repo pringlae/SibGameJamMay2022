@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185aefcadb0600b4b9c0efc7180da9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   brakingSpeed: 1
-  moveKeyPressTime: 1
+  moveKeyPressTime: 0.5
   player: {fileID: 0}
   camera: {fileID: 0}
   ui: {fileID: 0}
