@@ -5,67 +5,168 @@ using UnityEngine;
 public class DrezinawithMisha : MonoBehaviour
 {
     public float speed;
+    public float brakingSpeed;
+    public float moveKeyPressTime = 1f;
     private Rigidbody2D myRigidbody;
-    private Vector3 change;
     private Animator animator;
+    private new SpriteRenderer renderer;
+    private SpriteOutline outline;
+
+    public bool MovingRight
+    {
+        get => !renderer.flipX;
+        set => renderer.flipX = !value;
+    }
+
+    public bool Moving => myRigidbody.velocity.magnitude > 0.05f;
 
  
-    public bool playerInRange;
+    private bool playerInRange, empty, inputReceived, onHouseBlock;
+    private float movePressKeyTimer = 0;
+    private bool topKey = false;
     public GameObject player;
-    public GameObject car;
-    public GameObject carReady;
+    public GameObject camera;
+    public UIController ui;
 
-    public GameObject CameraOn;
-    public GameObject CameraOff;
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        renderer = GetComponent<SpriteRenderer>();
+        outline = GetComponent<SpriteOutline>();
+
+        Reset();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        change = Vector3.zero;
-        change.x = Input.GetAxis("Horizontal");
-        if (change != Vector3.zero)
+        if (empty || onHouseBlock) return;
+        
+        float input = Input.GetAxis("Vertical");
+        bool inputMatch = Mathf.Abs(input) > 0.1f && Mathf.RoundToInt(Mathf.Sign(input)) == (topKey ? 1 : -1);
+
+        if (!inputReceived)
         {
-            MoveCharacter();
-            animator.SetFloat("moveXD", change.x);
-            animator.SetBool("movingXD", true);
-        }
-        else
-        {
-            animator.SetBool("movingXD", false);
+            if (inputMatch)
+            {
+                inputReceived = true;
+                animator.SetInteger("moving", topKey ? 1 : -1);
+            }
         }
 
+        if (inputMatch && !Input.GetKey(KeyCode.Space))
+        {
+            myRigidbody.velocity += (MovingRight ? Vector2.right : Vector2.left) * speed * Time.fixedDeltaTime;
+        }
+        
+        if (!Moving) return;
+
+        movePressKeyTimer -= Time.fixedDeltaTime;
+        if (movePressKeyTimer < 0)
+        {
+            movePressKeyTimer = moveKeyPressTime;
+            if (inputReceived)
+            {
+                inputReceived = false;
+                topKey = !topKey;
+                ui.SetMovementState(true, topKey);
+            }
+            else
+            {
+                animator.SetInteger("moving", 0);
+            }
+        }
+
+    }
+
+    void Reset()
+    {
+        empty = true;
+        inputReceived = false;
+        animator.SetBool("Empty", true);
+        ui.SetInfoButtonsState(UIController.InfoButtonsState.OffDrezina);
+        outline.enabled = false;
+        onHouseBlock = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!empty)
         {
-            player.SetActive(true);
-            car.SetActive(true);
-            carReady.SetActive(false);
+            if (Moving)
+            {
+                ui.SetInfoButtonsState(UIController.InfoButtonsState.MovingDrezina);
+                if (Input.GetKey(KeyCode.Space))
+                    myRigidbody.velocity = Vector3.MoveTowards(myRigidbody.velocity, Vector3.zero, brakingSpeed * Time.deltaTime);
+            }
+            else
+            {
+                ui.SetInfoButtonsState(UIController.InfoButtonsState.DrezinaIdle);
+                if (Input.GetKeyDown(KeyCode.Space))
+                    GetOff();
+            }
+            return;
+        }
 
- //         player.transform.position = transform.position;
-            player.transform.position = new Vector3(transform.position.x, -0.1f, transform.position.z);
-            car.transform.position = transform.position;
-            CameraOn.transform.position = new Vector3(transform.position.x, 0.3438f, -10);
-            CameraOff.transform.position = new Vector3(transform.position.x, 0.3438f, -10);
-
-            CameraOn.SetActive(true);
-            CameraOff.SetActive(false);
-
+        if (empty && playerInRange && Input.GetKeyDown(KeyCode.Space))
+        {
+            GetOn();
+            return;
         }
     }
 
-        void MoveCharacter()
+    void GetOff()
     {
-        myRigidbody.MovePosition(
-            transform.position + change * speed * Time.fixedDeltaTime
-            );
+        player.SetActive(true);
+        camera.transform.parent = player.transform;
+        camera.transform.localPosition = new Vector3(0, 0.5f, -10);
+        animator.SetBool("Empty", true);
+        animator.SetInteger("moving", 0);
+        empty = true;
+        outline.enabled = true;
+
+        player.transform.position = new Vector3(transform.position.x, -0.1f, transform.position.z);
+        ui.SetInfoButtonsState(UIController.InfoButtonsState.NearDrezina);
+        ui.SetMovementState(false);
+    }
+
+    void GetOn()
+    {
+        player.SetActive(false);
+        camera.transform.parent = transform;
+        camera.transform.localPosition = new Vector3(0, 0.295f, -10);
+        animator.SetBool("Empty", false);
+        empty = false;
+        outline.enabled = false;
+        ui.SetInfoButtonsState(UIController.InfoButtonsState.DrezinaIdle);
+        ui.SetMovementState(true, topKey);
+    }
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 6) // player
+        {
+            playerInRange = true;
+            ui.SetInfoButtonsState(UIController.InfoButtonsState.NearDrezina);
+            outline.enabled = true;
+        }
+        if (other.gameObject.layer == 7)
+        {
+            onHouseBlock = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 6) // player
+        {
+            playerInRange = false;
+            ui.SetInfoButtonsState(UIController.InfoButtonsState.OffDrezina);
+            outline.enabled = false;
+        }
+        if (other.gameObject.layer == 7)
+        {
+            onHouseBlock = true;
+        }
     }
 }
